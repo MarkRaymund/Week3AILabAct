@@ -84,3 +84,31 @@ What if two rules conflict — EXAMPLE a student has a teacher's pass but the ca
 
 How would Aliah's program need to change to handle a rule that overrides even the teacher's pass
 """
+
+
+answer 
+
+6.   What happens if a student types "Yes" instead of "yes" for overdue books, or "Active" instead of "active" for status? How should Aliah's code handle these input variations so the kiosk doesn't break? (Hint: think back to `.lower()` from the assistant activity.)
+-they vary different as capital "Y" is different of lowercase "y" that is why use lower() to turn the uppercase letter to lowercase
+
+
+
+7.   The rules say overdue books block borrowing **"regardless of status"** — meaning even an active-status student with overdue books is blocked. Why did Aliah write the overdue check as a priority condition, and what would go wrong if she checked status first instead?
+- so that they can verify if they overdue because they can get passed if they still an active-status student with overdue books.
+
+
+8.   What if a student has no overdue books, active status, but tries to borrow 0 books? Should the kiosk treat this as valid input or an error? Modify your code to handle this edge case gracefully.
+- you have to modify and add constraint to the code and make it if num_books <= 0: so that it prevents the system to accept 0.
+
+
+
+act2
+
+5. Explain in 5-9 sentences why rule-based systems need explicit "override" conditions like this, and what might go wrong if Aliah forgets to code the override check before the time/item check instead of after.
+- rule based system used set of condition to check. but some condition overrides all the rules. for example if a teacher has a pass we do not want to compare that pass to the time of the day or how item someone has. the pass should let them bypass all those rules no matter what. so we need to check for the pass before we look at any other rules. This way we make sure the pass is treat especially. if aliah checks the time and item rules first the program might still work because someone with a pass might also meet the standard rules. the pass would not really be an override anymore it would be just another way to get to the result. this can cause problem because the program might not following the rules supposed to follow. if we tried to configure it we might realized which condition is supposed to be more important. if we check for the override first then it is clear in the code what is supposed to happen. the code itself shows us what priority is instead of relying on the outcome.
+
+What if two rules conflict — EXAMPLE a student has a teacher's pass but the cafeteria is currently closed for cleaning?
+- If the cafeteria is closed for cleaning, that overrides the teacher's pass. The pass only skips the time/item rule — it doesn't force the cafeteria to be open. A closed cafeteria applies to everyone, no exceptions, so that check has to come before the teacher's pass check.
+
+How would Aliah's program need to change to handle a rule that overrides even the teacher's pass
+-- Add a new check for "cafeteria closed," and put it above the teacher's pass check since it needs to beat everything, including the pass. new parameters and new check placed first.
